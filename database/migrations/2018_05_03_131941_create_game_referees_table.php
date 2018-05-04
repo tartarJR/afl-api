@@ -15,6 +15,9 @@ class CreateGameRefereesTable extends Migration
     {
         Schema::create('game_referees', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('game_id');
+            $table->unsignedInteger('referee_id');
+            $table->unsignedInteger('referee_type_id');
             $table->timestamps();
         });
     }

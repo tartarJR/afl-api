@@ -15,6 +15,7 @@ class CreateCoachTypesTable extends Migration
     {
         Schema::create('coach_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
             $table->timestamps();
         });
     }

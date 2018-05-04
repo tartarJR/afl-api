@@ -15,6 +15,8 @@ class CreateTeamNewsTable extends Migration
     {
         Schema::create('team_news', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('new_id');
+            $table->unsignedInteger('team_id');
             $table->timestamps();
         });
     }

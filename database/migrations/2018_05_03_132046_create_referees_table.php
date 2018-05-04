@@ -15,6 +15,10 @@ class CreateRefereesTable extends Migration
     {
         Schema::create('referees', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->date('birth_date');
+            $table->string('experience');
             $table->timestamps();
         });
     }

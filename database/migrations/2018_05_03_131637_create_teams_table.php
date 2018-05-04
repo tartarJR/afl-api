@@ -15,6 +15,12 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('info');
+            $table->string('primary_color_code');
+            $table->string('secondary_color_code');
+            $table->string('alternative_color_code')->nullable($value = true);
+            $table->string('img_path');
             $table->timestamps();
         });
     }

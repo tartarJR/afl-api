@@ -15,6 +15,19 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->date('birth_date');
+            $table->string('nationality');
+            $table->string('hometown');
+            $table->string('height');
+            $table->string('weight');
+            $table->string('jersey_number');
+            $table->string('experience');
+            $table->string('img_path');
+            $table->unsignedInteger('primary_position_id');
+            $table->unsignedInteger('secondary_position_id')->nullable($value = true);
+            $table->unsignedInteger('team_id');
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class CreateRefereeTypesTable extends Migration
     {
         Schema::create('referee_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
             $table->timestamps();
         });
     }
