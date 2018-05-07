@@ -26,7 +26,7 @@ class AddNewIdFkToTeamNew extends Migration
     public function down()
     {
         Schema::table('team_news', function (Blueprint $table) {
-            $table->dropForeign('new_id');
+            $table->dropForeign('team_news_new_id_foreign');
         });
     }
 }
