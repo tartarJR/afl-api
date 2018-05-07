@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(CoachTypeTableSeeder::class);
         // $this->call(RefereeTypeSeeder::class);
         // $this->call(WeeksTableSeeder::class);
+        // $this->call(SeasonsTableSeeder::class);
     }
 }
