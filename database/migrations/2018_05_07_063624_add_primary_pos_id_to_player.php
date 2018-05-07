@@ -26,7 +26,7 @@ class AddPrimaryPosIdToPlayer extends Migration
     public function down()
     {
         Schema::table('players', function (Blueprint $table) {
-            $table->dropForeign('primary_position_id');
+            $table->dropForeign('players_primary_position_id_foreign');
         });
     }
 }

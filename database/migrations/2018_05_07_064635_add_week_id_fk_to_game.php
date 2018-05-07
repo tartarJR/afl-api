@@ -26,7 +26,7 @@ class AddWeekIdFkToGame extends Migration
     public function down()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->dropForeign('week_id');
+            $table->dropForeign('games_week_id_foreign');
         });
     }
 }

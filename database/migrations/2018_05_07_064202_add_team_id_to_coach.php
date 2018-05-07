@@ -26,7 +26,7 @@ class AddTeamIdToCoach extends Migration
     public function down()
     {
         Schema::table('coaches', function (Blueprint $table) {
-            $table->dropForeign('team_id');
+            $table->dropForeign('coaches_team_id_foreign');
         });
     }
 }

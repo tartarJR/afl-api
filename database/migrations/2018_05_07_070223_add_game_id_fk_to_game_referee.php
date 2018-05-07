@@ -26,7 +26,7 @@ class AddGameIdFkToGameReferee extends Migration
     public function down()
     {
         Schema::table('game_referees', function (Blueprint $table) {
-            $table->dropForeign('game_id');
+            $table->dropForeign('game_referees_game_id_foreign');
         });
     }
 }

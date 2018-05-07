@@ -26,7 +26,7 @@ class AddSeasonIdFkToGame extends Migration
     public function down()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->dropForeign('season_id');
+            $table->dropForeign('games_season_id_foreign');
         });
     }
 }

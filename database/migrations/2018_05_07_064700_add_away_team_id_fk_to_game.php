@@ -26,7 +26,7 @@ class AddAwayTeamIdFkToGame extends Migration
     public function down()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->dropForeign('away_team_id');
+            $table->dropForeign('games_away_team_id_foreign');
         });
     }
 }
