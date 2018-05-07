@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(WeeksTableSeeder::class);
         // $this->call(SeasonsTableSeeder::class);
         // $this->call(TeamsTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
     }
 }
