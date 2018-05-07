@@ -14,7 +14,7 @@ class AddUnitIdFkToCoachType extends Migration
     public function up()
     {
         Schema::table('coach_types', function (Blueprint $table) {
-            $table->unsignedInteger('unit_id')->after('type');
+            $table->unsignedInteger('unit_id')->after('type')->nullable($value = true);
             $table->foreign('unit_id')->references('id')->on('units');
         });
     }
