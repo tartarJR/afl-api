@@ -15,7 +15,7 @@ class RefereeTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('coaches')->delete();
+        DB::table('referees')->delete();
 
         $faker = Faker::create();
 
