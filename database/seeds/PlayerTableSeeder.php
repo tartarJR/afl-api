@@ -4,6 +4,7 @@ use App\Player;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
 class PlayerTableSeeder extends Seeder
 {
