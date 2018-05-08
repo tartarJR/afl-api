@@ -23,7 +23,7 @@ class ReportsTableSeeder extends Seeder
             for ($j = 1; $j <= 5; $j++) {
                 Report::create(['title' => $faker->text(15),
                     'content' => $faker->paragraph(1),
-                    'img_path' => $faker->image('public/images/news', 200, 200, 'sports', false, true),
+                    'img_path' => $faker->image('public/images/reports', 200, 200, 'sports', false, true),
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'updated_at' => Carbon::now()->format('Y-m-d H:i:s')]);
             }
