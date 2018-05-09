@@ -13,6 +13,8 @@ class RefereeTypesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('referee_types')->delete();
+
         DB::table('referee_types')->insert([
             'type' => 'Referee',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

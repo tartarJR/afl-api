@@ -14,6 +14,8 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('teams')->delete();
+
         $faker = Faker::create();
 
         DB::table('teams')->insert([

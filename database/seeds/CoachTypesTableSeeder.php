@@ -13,6 +13,8 @@ class CoachTypesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('coach_types')->delete();
+
         DB::table('coach_types')->insert([
             'type' => 'Head Coach',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

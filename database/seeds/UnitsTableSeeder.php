@@ -13,6 +13,8 @@ class UnitsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('units')->delete();
+
         DB::table('units')->insert([
             'name' => 'Offensive Unit',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

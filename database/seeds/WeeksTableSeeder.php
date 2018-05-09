@@ -13,6 +13,8 @@ class WeeksTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('weeks')->delete();
+
         DB::table('weeks')->insert([
             'week' => '1. Hafta',
             'week_in_number' => 1,

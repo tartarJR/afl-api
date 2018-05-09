@@ -13,6 +13,8 @@ class SeasonsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('seasons')->delete();
+
         DB::table('seasons')->insert([
             'season' => '2015/2016',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
