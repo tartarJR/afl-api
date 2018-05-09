@@ -15,7 +15,7 @@ class ReportsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('reports')->delete();
+        DB::table('reports')->truncate();
 
         $faker = Faker::create();
 

@@ -13,7 +13,7 @@ class PositionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('positions')->delete();
+        DB::table('positions')->truncate();
 
         DB::table('positions')->insert([
             'name' => 'Center',

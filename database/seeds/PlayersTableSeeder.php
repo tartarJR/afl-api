@@ -15,7 +15,7 @@ class PlayersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('players')->delete();
+        DB::table('players')->truncate();
 
         $faker = Faker::create();
 

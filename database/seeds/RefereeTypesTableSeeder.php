@@ -13,7 +13,7 @@ class RefereeTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('referee_types')->delete();
+        DB::table('referee_types')->truncate();
 
         DB::table('referee_types')->insert([
             'type' => 'Referee',
