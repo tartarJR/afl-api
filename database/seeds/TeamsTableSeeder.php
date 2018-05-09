@@ -24,7 +24,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#B71C1C',
             'secondary_color_code' => '#000000',
             'alternative_color_code' => '#FFFFFF',
-            'img_path' => '/images/koc.png',
+            'img_path' => 'koc.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -35,7 +35,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#2E7D32',
             'secondary_color_code' => '#FFFFFF',
             'alternative_color_code' => '#000000',
-            'img_path' => '/images/uludag.png',
+            'img_path' => 'uludag.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -46,7 +46,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#01579B',
             'secondary_color_code' => '#FFFFFF',
             'alternative_color_code' => '',
-            'img_path' => '/images/bogazici.png',
+            'img_path' => 'bogazici.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -57,7 +57,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#004D40',
             'secondary_color_code' => '#FFFFFF',
             'alternative_color_code' => '#000000',
-            'img_path' => '/images/yeditepe.png',
+            'img_path' => 'yeditepe.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -68,7 +68,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#1B5E20',
             'secondary_color_code' => '#000000',
             'alternative_color_code' => '#FFFFFF',
-            'img_path' => '/images/sakarya.png',
+            'img_path' => 'sakarya.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -79,7 +79,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#FFFFFF',
             'secondary_color_code' => '#FBC02D',
             'alternative_color_code' => '#D32F2F',
-            'img_path' => '/images/itu.png',
+            'img_path' => 'itu.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -90,7 +90,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#800517',
             'secondary_color_code' => '#FFD740',
             'alternative_color_code' => '#FFFFFF',
-            'img_path' => '/images/anadolu.png',
+            'img_path' => 'anadolu.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -101,7 +101,7 @@ class TeamsTableSeeder extends Seeder
             'primary_color_code' => '#D50000',
             'secondary_color_code' => '#000000',
             'alternative_color_code' => '#FFFFFF',
-            'img_path' => '/images/odtu.png',
+            'img_path' => 'odtu.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
