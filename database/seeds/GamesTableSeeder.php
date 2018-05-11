@@ -13,7 +13,7 @@ class GamesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('games')->truncate();
+        //DB::table('games')->truncate();
 
         DB::table('games')->insert([
             'season_id' => 3,

@@ -13,7 +13,7 @@ class SeasonsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('seasons')->truncate();
+        //DB::table('seasons')->truncate();
 
         DB::table('seasons')->insert([
             'season' => '2015/2016',

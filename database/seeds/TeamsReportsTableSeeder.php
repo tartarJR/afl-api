@@ -14,7 +14,7 @@ class TeamsReportsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('teams_reports')->truncate();
+        //DB::table('teams_reports')->truncate();
 
         for ($i = 1; $i <= 40; $i++) {
             for ($j = 1; $j <= 2; $j++) {

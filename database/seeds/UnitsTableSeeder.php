@@ -13,7 +13,7 @@ class UnitsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('units')->truncate();
+        //DB::table('units')->truncate();
 
         DB::table('units')->insert([
             'name' => 'Offensive Unit',

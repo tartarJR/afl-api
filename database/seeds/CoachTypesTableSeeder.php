@@ -13,7 +13,7 @@ class CoachTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('coach_types')->truncate();
+        //DB::table('coach_types')->truncate();
 
         DB::table('coach_types')->insert([
             'type' => 'Head Coach',

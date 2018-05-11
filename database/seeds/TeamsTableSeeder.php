@@ -14,7 +14,7 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('teams')->truncate();
+        //DB::table('teams')->truncate();
 
         $faker = Faker::create();
 

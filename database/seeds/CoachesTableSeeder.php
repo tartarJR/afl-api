@@ -15,7 +15,7 @@ class CoachesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('coaches')->truncate();
+        //DB::table('coaches')->truncate();
 
         $faker = Faker::create();
 

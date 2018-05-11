@@ -15,7 +15,7 @@ class RefereesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('referees')->truncate();
+        //DB::table('referees')->truncate();
 
         $faker = Faker::create();
 
