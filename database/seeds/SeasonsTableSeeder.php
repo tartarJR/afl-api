@@ -28,7 +28,7 @@ class SeasonsTableSeeder extends Seeder
         ]);
 
         DB::table('seasons')->insert([
-            'season' => '2018/2018',
+            'season' => '2017/2018',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
