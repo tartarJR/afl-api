@@ -14,10 +14,10 @@ class ChangeGamesTableStructure extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->unsignedInteger('home_team_result')->nullable()->change();
-            $table->unsignedInteger('away_team_result')->nullable()->change();
-            $table->unsignedInteger('home_team_scored')->nullable()->change();
-            $table->unsignedInteger('away_team_scored')->nullable()->change();
+            $table->string('home_team_result')->nullable()->change();
+            $table->string('away_team_result')->nullable()->change();
+            $table->integer('home_team_scored')->nullable()->change();
+            $table->integer('away_team_scored')->nullable()->change();
         });
     }
 
@@ -29,10 +29,10 @@ class ChangeGamesTableStructure extends Migration
     public function down()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->unsignedInteger('home_team_result')->nullable(false)->change();
-            $table->unsignedInteger('away_team_result')->nullable(false)->change();
-            $table->unsignedInteger('home_team_scored')->nullable(false)->change();
-            $table->unsignedInteger('away_team_scored')->nullable(false)->change();
+            $table->string('home_team_result')->nullable(false)->change();
+            $table->string('away_team_result')->nullable(false)->change();
+            $table->integer('home_team_scored')->nullable(false)->change();
+            $table->integer('away_team_scored')->nullable(false)->change();
         });
     }
 }
