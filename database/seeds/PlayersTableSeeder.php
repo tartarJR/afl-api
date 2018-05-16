@@ -15,7 +15,7 @@ class PlayersTableSeeder extends Seeder
      */
     public function run()
     {
-        //DB::table('players')->truncate();
+        DB::table('players')->truncate();
 
         $faker = Faker::create();
 
@@ -32,7 +32,7 @@ class PlayersTableSeeder extends Seeder
                         'weight' => rand(65, 140),
                         'jersey_number' => rand(1, 99),
                         'experience' => rand(3, 10),
-                        'img_path' => $faker->image('public/images/players', 200, 200, 'people', false, true),
+                        'img_path' => $faker->image('storage/app/public/images/players', 200, 200, 'people', false),
                         'primary_position_id' => $j,
                         'team_id' => $i,
                         'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

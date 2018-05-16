@@ -25,7 +25,7 @@ class CoachesTableSeeder extends Seeder
                     'last_name' => $faker->lastName,
                     'birth_date' => $faker->date($format = 'Y-m-d', $max = '1979-06-09'),
                     'experience' => rand(3, 10),
-                    'img_path' => $faker->image('public/images/coaches', 200, 200, 'people', false, true),
+                    'img_path' => $faker->image(storage_path('app/public/images/coaches'), 200, 200, 'people', false, true),
                     'coach_type_id' => $j,
                     'team_id' => $i,
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
