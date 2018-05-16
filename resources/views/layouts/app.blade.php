@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TAFL APP ADMIN PANEL') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('app.name', 'TAFL APP ADMIN PANEL') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Giriş Yap') }}</a></li>
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -55,7 +55,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Çıkış Yap') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
