@@ -27,6 +27,7 @@ Route::post('logout', [
     'uses' => 'Auth\LoginController@logout'
 ]);
 
+// nav bar routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/coaches', 'HomeController@coach')->name('coach');
 Route::get('/games', 'HomeController@game')->name('game');
