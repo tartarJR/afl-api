@@ -10,4 +10,9 @@ class CoachType extends Model
     {
         return $this->hasMany(Coach::class);
     }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }
