@@ -10,4 +10,9 @@ class Coach extends Model
     {
         return $this->belongsTo(CoachType::class);
     }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

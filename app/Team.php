@@ -10,4 +10,9 @@ class Team extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function coaches()
+    {
+        return $this->hasMany(Coach::class);
+    }
 }
