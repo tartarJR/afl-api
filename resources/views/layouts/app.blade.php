@@ -44,39 +44,29 @@
                             Sezon Yönetimi
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Maçlar</a>
-                            <a class="dropdown-item" href="#">Sezon</a>
-                            <a class="dropdown-item" href="#">Hafta</a>
+                            <a class="dropdown-item" href="{{ route('game') }}">Maçlar</a>
+                            <a class="dropdown-item" href="{{ route('season') }}">Sezon</a>
+                            <a class="dropdown-item" href="{{ route('week') }}">Hafta</a>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Takımlar <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('team') }}">Takımlar <span
+                                    class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Koçlar <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('coach') }}">Koçlar <span
+                                    class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Oyuncular <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('player') }}">Oyuncular <span
+                                    class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hakem Yönetimi
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Hakamler</a>
-                            <a class="dropdown-item" href="#">Haken Atamaları</a>
-                        </div>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('referee') }}">Hakamler <span
+                                    class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Haber Yönetimi
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Haberler</a>
-                            <a class="dropdown-item" href="#">Haber Atamaları</a>
-                        </div>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('report') }}">Haberler <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
