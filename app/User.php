@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function fullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -35,5 +40,15 @@ class User extends Authenticatable
     public function team()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role->name == 'Admin' ? true : false;
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role->name == 'Super Admin' ? true : false;
     }
 }
