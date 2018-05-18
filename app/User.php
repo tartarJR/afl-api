@@ -9,6 +9,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const SUPER_ADMIN = "Super Admin";
+    const ADMIN = "Admin";
+
     /**
      * The attributes that are mass assignable.
      *
@@ -44,11 +47,11 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role->name == 'Admin' ? true : false;
+        return $this->role->name === User::ADMIN ? true : false;
     }
 
     public function isSuperAdmin()
     {
-        return $this->role->name == 'Super Admin' ? true : false;
+        return $this->role->name === User::SUPER_ADMIN ? true : false;
     }
 }
