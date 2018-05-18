@@ -38,36 +38,42 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Sezon Yönetimi
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('game') }}">Maçlar</a>
-                            <a class="dropdown-item" href="{{ route('season') }}">Sezon</a>
-                            <a class="dropdown-item" href="{{ route('week') }}">Hafta</a>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('team') }}">Takımlar <span
-                                    class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('coach') }}">Koçlar <span
-                                    class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('player') }}">Oyuncular <span
-                                    class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('referee') }}">Hakamler <span
-                                    class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('report') }}">Haberler <span class="sr-only">(current)</span></a>
-                    </li>
+                    @auth
+                        @if(Auth::user()->isAdmin())
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('coach') }}">Koçlar <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('player') }}">Oyuncular <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                        @elseif(Auth::user()->isSuperAdmin())
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sezon Yönetimi
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('game') }}">Maçlar</a>
+                                    <a class="dropdown-item" href="{{ route('season') }}">Sezon</a>
+                                    <a class="dropdown-item" href="{{ route('week') }}">Hafta</a>
+                                </div>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('team') }}">Takımlar <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('referee') }}">Hakamler <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('report') }}">Haberler <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                        @endif
+                    @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->
