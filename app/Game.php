@@ -25,4 +25,18 @@ class Game extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function referees()
+    {
+        return $this->belongsToMany(Referee::class, 'games_referees')
+            ->withPivot('referee_type_id')
+            ->join('referee_types', 'referee_type_id', 'referee_types.id')
+            ->select('first_name', 'last_name', 'referee_types.type');
+    }
+
+    // this relationship is not necessary
+    public function refereeTypes()
+    {
+        return $this->belongsToMany(RefereeType::class, 'games_referees');
+    }
 }
