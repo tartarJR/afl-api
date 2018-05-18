@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,7 +34,11 @@ class HomeController extends Controller
 
     public function game()
     {
-        return view('game.index');
+        // TODO sezon, haftaya göre filtreleme, en başta sezon seçme, navbar seçili olan highlight etme, sil update butonları
+
+        $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')->get();
+
+        return view('game.index')->with('games', $games);
     }
 
     public function player()
