@@ -15,4 +15,9 @@ class Position extends Model
     {
         return $this->hasMany(Player::class, 'secondary_position_id');
     }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }

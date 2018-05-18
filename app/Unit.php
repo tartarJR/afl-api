@@ -10,4 +10,9 @@ class Unit extends Model
     {
         return $this->hasMany(CoachType::class);
     }
+
+    public function positions()
+    {
+        return $this->hasMany(Position::class);
+    }
 }
