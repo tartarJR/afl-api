@@ -29,11 +29,12 @@ Route::post('logout', [
 
 // nav bar routes
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/coaches', 'HomeController@coach')->name('coach');
-Route::get('/games', 'HomeController@game')->name('game');
-Route::get('/players', 'HomeController@player')->name('player');
-Route::get('/referees', 'HomeController@report')->name('referee');
-Route::get('/seasons', 'HomeController@season')->name('season');
-Route::get('/teams', 'HomeController@team')->name('team');
-Route::get('/weeks', 'HomeController@week')->name('week');
-Route::get('/reports', 'HomeController@week')->name('report');
+
+Route::resource('games', 'GameController');
+Route::resource('seasons', 'SeasonController');
+Route::resource('weeks', 'WeekController');
+Route::resource('teams', 'TeamController');
+Route::resource('reports', 'ReportController');
+Route::resource('players', 'PlayerController');
+Route::resource('coaches', 'CoachController');
+Route::resource('referees', 'RefereeController');

@@ -56,21 +56,29 @@
                                     Sezon Yönetimi
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('game') }}">Maçlar</a>
-                                    <a class="dropdown-item" href="{{ route('season') }}">Sezon</a>
-                                    <a class="dropdown-item" href="{{ route('week') }}">Hafta</a>
+                                    <a class="dropdown-item" href="{{ route('games.index') }}">Maçlar</a>
+                                    <a class="dropdown-item" href="{{ route('seasons.index') }}">Sezon</a>
+                                    <a class="dropdown-item" href="{{ route('weeks.index') }}">Hafta</a>
                                 </div>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('team') }}">Takımlar <span
+                                <a class="nav-link" href="{{ route('teams.index') }}">Takımlar <span
                                             class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('referee') }}">Hakamler <span
+                                <a class="nav-link" href="{{ route('referees.index') }}">Hakamler <span
                                             class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('report') }}">Haberler <span
+                                <a class="nav-link" href="{{ route('reports.index') }}">Haberler <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('coaches.index') }}">Koçlar <span
+                                            class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('players.index') }}">Oyuncular <span
                                             class="sr-only">(current)</span></a>
                             </li>
                         @endif
