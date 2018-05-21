@@ -13,7 +13,7 @@
 
 //Route::get('/', 'Auth\LoginController@showLoginForm');
 
-// Authentication Routes...
+// Authentication Routes
 Route::get('/', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
@@ -27,9 +27,10 @@ Route::post('logout', [
     'uses' => 'Auth\LoginController@logout'
 ]);
 
-// nav bar routes
+// Home Route
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Resource Routes
 Route::resource('games', 'GameController');
 Route::resource('seasons', 'SeasonController');
 Route::resource('weeks', 'WeekController');
