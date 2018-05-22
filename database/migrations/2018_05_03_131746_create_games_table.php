@@ -23,8 +23,8 @@ class CreateGamesTable extends Migration
             $table->string('place');
             $table->tinyInteger('is_played');
             $table->string('game_summary')->nullable($value = true);
-            //$table->string('home_team_result');
-            //$table->string('away_team_result');
+            $table->string('home_team_result');
+            $table->string('away_team_result');
             $table->integer('home_team_scored');
             $table->integer('away_team_scored');
             $table->timestamps();
