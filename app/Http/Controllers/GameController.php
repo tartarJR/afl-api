@@ -30,9 +30,9 @@ class GameController extends Controller
                 })->when(request('week') != 0, function ($q) {
                     return $q->where('week_id', request('week'));
                 })
-                ->get();
+                ->paginate(15);
         } else {
-            $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')->get();
+            $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')->paginate(15);
         }
 
         return view('game.index')->with(compact('games', 'seasons', 'weeks'));
@@ -45,7 +45,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        return view('game.create');
     }
 
     /**

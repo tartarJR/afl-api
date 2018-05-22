@@ -2,14 +2,12 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-lg-8">
-            <h5 class="mt-2">Maçlar</h5>
-        </div>
-        <div class="col-lg-4">
+    <div class="d-flex justify-content-between bd-highlight">
+        <div class="p-2 bd-highlight"><h5>Maçlar</h5></div>
+        <div class="p-2 bd-highlight">
             <form class="form-inline" method="get" action="{{ route('games.index') }}">
                 {{ csrf_field() }}
-                <div class="form-group mb-2">
+                <div class="form-group">
                     <select class="form-control" id="season-select" name="season">
                         <option value="0">Tüm Sezonlar</option>
                         @foreach ($seasons as $season)
@@ -17,7 +15,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group mx-sm-3">
                     <select class="form-control" id="week-select" name="week">
                         <option value="0">Tüm Haftalar</option>
                         @foreach ($weeks as $week)
@@ -25,7 +23,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Filtrele</button>
+                <button type="submit" class="btn btn-primary">Filtrele</button>
             </form>
         </div>
     </div>
@@ -63,6 +61,10 @@
                 </table>
             @endif
         </div>
+    </div>
+    <div class="d-flex justify-content-between bd-highlight mb-3">
+        
+        <div class="p-2 bd-highlight">{{ $games->links() }}</div>
     </div>
 
 @endsection
