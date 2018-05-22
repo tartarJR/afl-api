@@ -6,7 +6,6 @@
         <div class="p-2 bd-highlight"><h5>Maçlar</h5></div>
         <div class="p-2 bd-highlight">
             <form class="form-inline" method="get" action="{{ route('games.index') }}">
-                {{ csrf_field() }}
                 <div class="form-group">
                     <select class="form-control" id="season-select" name="season">
                         <option value="0">Tüm Sezonlar</option>
