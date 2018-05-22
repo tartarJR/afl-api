@@ -5,25 +5,45 @@
     <h5>Maç Oluşturma Formu</h5>
 
     <div class="mt-3">
-        <form>
+        <form method="post" action="{{ route('games.store') }}">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">Sezon</label>
-                    <select class="form-control" id="" name=""></select>
+                    <label for="season-select">Sezon</label>
+                    <select class="form-control" id="season-select" name="season">
+                        <option value="0">Tüm Sezonlar</option>
+                        @foreach ($seasons as $season)
+                            <option value="{{ $season->id }}" {{ old('season') == $season->id ? 'selected' : '' }}>{{ $season->season }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputPassword4">Hafta</label>
-                    <select class="form-control" id="" name=""></select>
+                    <label for="week-select">Hafta</label>
+                    <select class="form-control" id="week-select" name="week">
+                        <option value="0">Tüm Haftalar</option>
+                        @foreach ($weeks as $week)
+                            <option value="{{ $week->id }}" {{ old('week') == $week->id ? 'selected' : '' }}>{{ $week->week }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Ev Sahibi Takım</label>
-                    <select class="form-control" id="" name=""></select>
+                    <select class="form-control" id="week-select" name="home-team">
+                        <option value="0">--Lütfen Takım Seçin--</option>
+                        @foreach ($teams as $team)
+                            <option value="{{ $team->id }}" {{ old('home-team') == $team->id ? 'selected' : '' }}>{{ $team->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Misafir Takım</label>
-                    <select class="form-control" id="" name=""></select>
+                    <select class="form-control" id="week-select" name="away-team">
+                        <option value="0">--Lütfen Takım Seçin--</option>
+                        @foreach ($teams as $team)
+                            <option value="{{ $team->id }}" {{ old('away-team') == $team->id ? 'selected' : '' }}>{{ $team->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-row">

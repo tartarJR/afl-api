@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Season;
+use App\Team;
 use App\Week;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,11 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('game.create');
+        $seasons = Season::all();
+        $weeks = Week::all();
+        $teams = Team::all();
+
+        return view('game.create')->with(compact('teams', 'seasons', 'weeks'));
     }
 
     /**
