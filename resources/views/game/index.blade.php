@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-between bd-highlight mb-3">
-        
+        <div class="p-2 bd-highlight"><a href="{{ route('games.create') }}"><p>Yeni bir maç yarat</p></a></div>
         <div class="p-2 bd-highlight">{{ $games->links() }}</div>
     </div>
 
