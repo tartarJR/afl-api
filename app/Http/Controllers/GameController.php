@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Season;
+use App\Week;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -12,13 +14,28 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // TODO sezon, haftaya göre filtreleme, en başta sezon seçme, navbar seçili olan highlight etme, sil update butonları
+        // TODO navbar seçili olan highlight etme, sil update butonları
 
-        $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')->get();
+        $request->flash();
 
-        return view('game.index')->withGames($games);
+        $seasons = Season::all();
+        $weeks = Week::all();
+
+        if ($request->has('season') && $request->has('week')) { // check filter value is passed or not
+            $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')
+                ->when(request('season') != 0, function ($q) {
+                    return $q->where('season_id', request('season'));
+                })->when(request('week') != 0, function ($q) {
+                    return $q->where('week_id', request('week'));
+                })
+                ->get();
+        } else {
+            $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')->get();
+        }
+
+        return view('game.index')->with(compact('games', 'seasons', 'weeks'));
     }
 
     /**

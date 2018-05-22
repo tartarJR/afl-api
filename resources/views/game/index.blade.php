@@ -2,27 +2,67 @@
 
 @section('content')
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Sezon</th>
-            <th scope="col">Hafta</th>
-            <th scope="col">Ev Sahibi Takım</th>
-            <th scope="col">Misafir Takım</th>
-            <th scope="col">Tarih ve Saat</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($games as $game)
-            <tr>
-                <td>{{$game->season->season}}</td>
-                <td>{{$game->week->week}}</td>
-                <td>{{@$game->homeTeam->name}}</td>
-                <td>{{@$game->awayTeam->name}}</td>
-                <td>{{@$game->game_date_time}}</td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-lg-8">
+            <h5 class="mt-2">Maçlar</h5>
+        </div>
+        <div class="col-lg-4">
+            <form class="form-inline" method="get" action="{{ route('games.index') }}">
+                {{ csrf_field() }}
+                <div class="form-group mb-2">
+                    <select class="form-control" id="season-select" name="season">
+                        <option value="0">Tüm Sezonlar</option>
+                        @foreach ($seasons as $season)
+                            <option value="{{ $season->id }}" {{ old('season') == $season->id ? 'selected' : '' }}>{{ $season->season }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <select class="form-control" id="week-select" name="week">
+                        <option value="0">Tüm Haftalar</option>
+                        @foreach ($weeks as $week)
+                            <option value="{{ $week->id }}" {{ old('week') == $week->id ? 'selected' : '' }}>{{ $week->week }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Filtrele</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            @if (count($games) === 0)
+                <div class="alert alert-info">
+                    <strong>Upps!</strong> Aranılan kriterlere uygun bir maç bulunamadı.
+                </div>
+            @else
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Sezon</th>
+                        <th scope="col">Hafta</th>
+                        <th scope="col">Ev Sahibi Takım</th>
+                        <th scope="col">Misafir Takım</th>
+                        <th scope="col">Tarih ve Saat</th>
+                        <th scope="col">Yer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($games as $game)
+                        <tr>
+                            <td>{{ $game->season->season }}</td>
+                            <td>{{ $game->week->week }}</td>
+                            <td>{{ $game->homeTeam->name }}</td>
+                            <td>{{ $game->awayTeam->name }}</td>
+                            <td>{{ $game->game_date_time }}</td>
+                            <td>{{ $game->place }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
+        </div>
+    </div>
 
 @endsection
