@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
@@ -40,5 +41,10 @@ class Game extends Model
     public function refereeTypes()
     {
         return $this->belongsToMany(RefereeType::class, 'games_referees');
+    }
+
+    public function setGameDateTimeAttribute($value)
+    {
+        $this->attributes['game_date_time'] = Carbon::parse($value)->format('Y-m-d H:i:s');
     }
 }
