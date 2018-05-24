@@ -7,20 +7,10 @@
         <div class="p-2 bd-highlight">
             <form class="form-inline" method="get" action="{{ route('games.index') }}">
                 <div class="form-group">
-                    <select class="form-control" id="season-select" name="season">
-                        <option value="0">Tüm Sezonlar</option>
-                        @foreach ($seasons as $season)
-                            <option value="{{ $season->id }}" {{ old('season') == $season->id ? 'selected' : '' }}>{{ $season->season }}</option>
-                        @endforeach
-                    </select>
+                    {!! Form::select('season', $seasons, null,['id' => 'season-select', 'class' => 'form-control', 'placeholder' => 'Tüm sezonlar']) !!}
                 </div>
                 <div class="form-group mx-sm-3">
-                    <select class="form-control" id="week-select" name="week">
-                        <option value="0">Tüm Haftalar</option>
-                        @foreach ($weeks as $week)
-                            <option value="{{ $week->id }}" {{ old('week') == $week->id ? 'selected' : '' }}>{{ $week->week }}</option>
-                        @endforeach
-                    </select>
+                    {!! Form::select('week', $weeks, null,['id' => 'week-select', 'class' => 'form-control', 'placeholder' => 'Tüm haftalar']) !!}
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrele</button>
             </form>
