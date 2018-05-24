@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+
+use App\Http\Requests\StoreGameRequest;
 use App\Season;
 use App\Team;
 use App\Week;
@@ -46,11 +48,11 @@ class GameController extends Controller
      */
     public function create()
     {
-        $seasons = Season::all();
-        $weeks = Week::all();
-        $teams = Team::all();
+        $seasons = Season::pluck('season', 'id');
+        $weeks = Week::pluck('week', 'id');
+        $teams = Team::pluck('name', 'id');
 
-        return view('game.create')->with(compact('teams', 'seasons', 'weeks'));
+        return view('game.create')->with(compact('seasons', 'weeks', 'teams'));
     }
 
     /**
@@ -59,9 +61,11 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGameRequest $request)
     {
-        //
+        Game::create($request->all());
+
+        return redirect()->route('games.index')->with('successMessage', 'Maç başarıyla kaydedildi');
     }
 
     /**
