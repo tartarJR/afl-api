@@ -29,24 +29,12 @@ class GameController extends Controller
      */
     public function index(Request $request)
     {
-        // TODO navbar seçili olan highlight etme, sil update butonları
+        $request->flash(); // TODO why withInput is not working ?
 
-        $request->flash();
+        $seasons = Season::pluck('season', 'id');
+        $weeks = Week::pluck('week', 'id');
 
-        $seasons = Season::all();
-        $weeks = Week::all();
-
-        if ($request->has('season') && $request->has('week')) { // check filter value is passed or not
-            $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')
-                ->when(request('season') != 0, function ($q) {
-                    return $q->where('season_id', request('season'));
-                })->when(request('week') != 0, function ($q) {
-                    return $q->where('week_id', request('week'));
-                })
-                ->paginate(15);
-        } else {
-            $games = Game::with('season', 'week', 'homeTeam', 'awayTeam')->paginate(15);
-        }
+        $games = Game::ofFilter(request('season'), request('week'));
 
         return view('game.index')->with(compact('games', 'seasons', 'weeks'));
     }
