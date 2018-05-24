@@ -24,16 +24,14 @@ class StoreGameRequest extends FormRequest
     public function rules()
     {
         return [
-
-            'season_id' => 'required',
-            'week_id' => 'required',
-            'home_team_id' => 'required',
-            'away_team_id' => 'required',
-            'game_date_time' => 'required',
+            'season_id' => 'required|integer',
+            'week_id' => 'required|integer',
+            'home_team_id' => 'required|integer',
+            'away_team_id' => 'required|integer',
+            'game_date_time' => 'required|date_format:"Y-m-d\TH:i"',
             'place' => 'required',
             'home_team_scored' => 'nullable|integer',
             'away_team_scored' => 'nullable|integer'
-
         ];
     }
 
@@ -45,6 +43,7 @@ class StoreGameRequest extends FormRequest
             'home_team_id.required' => 'Lütfen ev sahibi takım seçimi yapınız.',
             'away_team_id.required' => 'Lütfen misaifr takım seçimi yapınız.',
             'game_date_time.required' => 'Lütfen tarih ve zaman giriniz.',
+            'game_date_time.date_format' => 'Lütfen uygun tarih ve zaman .',
             'place.required' => 'Lütfen yer giriniz.',
             'home_team_scored.integer' => 'Ev sahibi takım skor girdisi sayı olmak zorundadır.',
             'away_team_scored.integer' => 'Misafir takım skor girdisi sayı olmak zorundadır.'
