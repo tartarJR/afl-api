@@ -51,8 +51,14 @@
                             <td>{{ $game->awayTeam->name }}</td>
                             <td>{{ $game->local_game_date_time }}</td>
                             <td>{{ $game->place }}</td>
-                            <td>{{ link_to_route('games.edit', 'Güncelle', $game->id) }}</td>
-                            <td>{{ link_to_route('games.destroy', 'Sil', $game->id) }}</td>
+                            <td>{{ link_to_route('games.edit', 'Güncelle', $game->id, ['class' => 'btn btn-primary']) }}</td>
+                            <td>
+                                <form method="POST" action="{{ route('games.destroy', $game->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-primary" type="submit">Sil</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
