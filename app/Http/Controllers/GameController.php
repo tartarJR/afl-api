@@ -117,6 +117,8 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Game::where('id', $id)->delete();
+        
+        return redirect()->route('games.index')->with('successMessage', 'Maç başarıyla silindi');
     }
 }
