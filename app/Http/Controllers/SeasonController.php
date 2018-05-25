@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Season;
 use Illuminate\Http\Request;
 
 class SeasonController extends Controller
@@ -23,7 +24,9 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        return view('season.index');
+        $seasons = Season::paginate(10);
+
+        return view('season.index')->with('seasons', $seasons);
     }
 
     /**
