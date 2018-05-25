@@ -10,4 +10,9 @@ class Season extends Model
     {
         return $this->hasMany(Game::class);
     }
+
+    public function hasGames()
+    {
+        return count($this->games) > 0 ? true : false;
+    }
 }
