@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 
-use App\Http\Requests\StoreGameRequest;
+use App\Http\Requests\GameForm;
 use App\Season;
 use App\Team;
 use App\Week;
@@ -25,6 +25,7 @@ class GameController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -56,12 +57,12 @@ class GameController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\GameForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGameRequest $request)
+    public function store(GameForm $request)
     {
-        Game::create($request->all());
+        $request->saveGame();
 
         return redirect()->route('games.index')->with('successMessage', 'Maç başarıyla kaydedildi');
     }
@@ -85,19 +86,27 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+        $game = Game::findOrFail($id);
+
+        $seasons = Season::pluck('season', 'id');
+        $weeks = Week::pluck('week', 'id');
+        $teams = Team::pluck('name', 'id');
+
+        return view('game.edit')->with(compact('game', 'seasons', 'weeks', 'teams'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\GameForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GameForm $request, $id)
     {
-        //
+        $request->updateGame($id);
+
+        return redirect()->route('games.index')->with('successMessage', 'Maç başarıyla güncellendi');
     }
 
     /**
