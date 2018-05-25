@@ -36,7 +36,7 @@ class GameController extends Controller
         $weeks = Week::pluck('week', 'id');
         $teams = Team::pluck('name', 'id');
 
-        $games = Game::ofFilter(request('season'), request('week'), request('team'));
+        $games = Game::ofFilter(request('season_id'), request('week_id'), request('team_id'));
 
         return view('game.index')->with(compact('games', 'seasons', 'weeks', 'teams'));
     }

@@ -58,18 +58,22 @@ class Game extends Model
         $this->attributes['game_date_time'] = Carbon::parse($value)->format('Y-m-d H:i:s');
     }
 
-    public function scopeOfFilter($query, $season, $week, $team)
+    // filter games by season, week and team
+    public function scopeOfFilter($query, $season_id, $week_id, $team_id)
     {
         return $query->with('season', 'week', 'homeTeam', 'awayTeam')
-            ->when($season != null, function ($q) use ($season) {
-                return $q->where('season_id', $season);
-            })->when($week != null, function ($q) use ($week) {
-                return $q->where('week_id', $week);
+            ->when($season_id != null, function ($q) use ($season_id) {
+                return $q->where('season_id', $season_id);
+            })->when($week_id != null, function ($q) use ($week_id) {
+                return $q->where('week_id', $week_id);
             })
-            ->when($team != null, function ($q) use ($team) {
-                return $q->where(function ($q) use ($team) {
-                    $q->where('home_team_id', $team)
-                        ->orWhere('away_team_id', $team);
+            ->when($week_id != null, function ($q) use ($week_id) {
+                return $q->where('week_id', $week_id);
+            })
+            ->when($team_id != null, function ($q) use ($team_id) {
+                return $q->where(function ($q) use ($team_id) {
+                    $q->where('home_team_id', $team_id)
+                        ->orWhere('away_team_id', $team_id);
                 });
             })
             ->paginate(10);
