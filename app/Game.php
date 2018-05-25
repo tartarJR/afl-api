@@ -45,7 +45,12 @@ class Game extends Model
 
     public function getGameDateTimeAttribute($value)
     {
-        return Carbon::parse($value)->format('d/m/Y H:i');
+        return Carbon::parse($value)->format('Y-m-d\TH:i');
+    }
+
+    public function getLocalGameDateTimeAttribute()
+    {
+        return Carbon::parse($this->attributes['game_date_time'])->format('d/m/Y H:i');
     }
 
     public function setGameDateTimeAttribute($value)
