@@ -49,8 +49,10 @@
                             <td>{{ $game->week->week }}</td>
                             <td>{{ $game->homeTeam->name }}</td>
                             <td>{{ $game->awayTeam->name }}</td>
-                            <td>{{ $game->game_date_time }}</td>
+                            <td>{{ $game->local_game_date_time }}</td>
                             <td>{{ $game->place }}</td>
+                            <td>{{ link_to_route('games.edit', 'Güncelle', $game->id) }}</td>
+                            <td>{{ link_to_route('games.destroy', 'Sil', $game->id) }}</td>
                         </tr>
                     @endforeach
                     </tbody>
