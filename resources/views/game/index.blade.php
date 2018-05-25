@@ -6,11 +6,14 @@
         <div class="p-2 bd-highlight"><h5>Maçlar</h5></div>
         <div class="p-2 bd-highlight">
             <form class="form-inline" method="get" action="{{ route('games.index') }}">
-                <div class="form-group">
+                <div class="form-group mx-sm-1">
                     {!! Form::select('season', $seasons, null,['id' => 'season-select', 'class' => 'form-control', 'placeholder' => 'Tüm sezonlar']) !!}
                 </div>
-                <div class="form-group mx-sm-3">
+                <div class="form-group mx-sm-1">
                     {!! Form::select('week', $weeks, null,['id' => 'week-select', 'class' => 'form-control', 'placeholder' => 'Tüm haftalar']) !!}
+                </div>
+                <div class="form-group mx-sm-1">
+                    {!! Form::select('team', $teams, null,['id' => 'team-select', 'class' => 'form-control', 'placeholder' => 'Tüm takımlar']) !!}
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrele</button>
             </form>

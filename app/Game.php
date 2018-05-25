@@ -58,13 +58,19 @@ class Game extends Model
         $this->attributes['game_date_time'] = Carbon::parse($value)->format('Y-m-d H:i:s');
     }
 
-    public function scopeOfFilter($query, $season, $week)
+    public function scopeOfFilter($query, $season, $week, $team)
     {
         return $query->with('season', 'week', 'homeTeam', 'awayTeam')
-            ->when($season != null, function ($q) {
-                return $q->where('season_id', request('season'));
-            })->when($week != null, function ($q) {
-                return $q->where('week_id', request('week'));
+            ->when($season != null, function ($q) use ($season) {
+                return $q->where('season_id', $season);
+            })->when($week != null, function ($q) use ($week) {
+                return $q->where('week_id', $week);
+            })
+            ->when($team != null, function ($q) use ($team) {
+                return $q->where(function ($q) use ($team) {
+                    $q->where('home_team_id', $team)
+                        ->orWhere('away_team_id', $team);
+                });
             })
             ->paginate(10);
     }

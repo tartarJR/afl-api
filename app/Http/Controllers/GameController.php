@@ -34,10 +34,11 @@ class GameController extends Controller
 
         $seasons = Season::pluck('season', 'id');
         $weeks = Week::pluck('week', 'id');
+        $teams = Team::pluck('name', 'id');
 
-        $games = Game::ofFilter(request('season'), request('week'));
+        $games = Game::ofFilter(request('season'), request('week'), request('team'));
 
-        return view('game.index')->with(compact('games', 'seasons', 'weeks'));
+        return view('game.index')->with(compact('games', 'seasons', 'weeks', 'teams'));
     }
 
     /**
@@ -118,7 +119,7 @@ class GameController extends Controller
     public function destroy($id)
     {
         Game::where('id', $id)->delete();
-        
+
         return redirect()->route('games.index')->with('successMessage', 'Maç başarıyla silindi');
     }
 }
