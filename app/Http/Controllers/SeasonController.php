@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeasonForm;
 use App\Season;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        $seasons = Season::paginate(10);
+        $seasons = Season::orderBy('season', 'desc')->paginate(10);
 
         return view('season.index')->with('seasons', $seasons);
     }
@@ -36,7 +37,7 @@ class SeasonController extends Controller
      */
     public function create()
     {
-        //
+        return view('season.create');
     }
 
     /**
@@ -45,9 +46,11 @@ class SeasonController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SeasonForm $request)
     {
-        //
+        $request->saveGame();
+
+        return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla kaydedildi');
     }
 
     /**
