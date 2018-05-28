@@ -14,7 +14,7 @@
             <div class="form-group col-md-6">
                 <label for="season-select">Sezon</label>
                 <select id="season-select" class="form-control" name="season">
-                    <option>Lütfen sezon seçiniz</option>
+                    <option value="">Lütfen sezon seçiniz</option>
                     @for($year = 2010; $year<2026; $year++)
                         <option value="{{ strval($year) . '/' .strval($year + 1) }}">{{ strval($year) . '/' .strval($year + 1) }}</option>
                     @endfor
