@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Team;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -23,7 +24,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('team.index');
+        $teams = Team::paginate(10);
+
+        return view('team.index')->with('teams', $teams);
     }
 
     /**
@@ -33,7 +36,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('team.create');
     }
 
     /**
@@ -66,7 +69,9 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        return view('team.edit')->with('team', $team);
     }
 
     /**
