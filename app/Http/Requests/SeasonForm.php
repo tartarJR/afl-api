@@ -37,12 +37,12 @@ class SeasonForm extends FormRequest
         ];
     }
 
-    public function saveGame()
+    public function saveSeason()
     {
         Season::create($this->all());
     }
 
-    public function updateGame($id)
+    public function updateSeason($id)
     {
         $game = Season::findOrFail($id);
         $game->fill($this->all());
