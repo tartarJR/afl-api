@@ -33,7 +33,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Resource Routes
 Route::resource('games', 'GameController');
 Route::resource('seasons', 'SeasonController');
-Route::resource('weeks', 'WeekController');
 Route::resource('teams', 'TeamController');
 Route::resource('reports', 'ReportController');
 Route::resource('players', 'PlayerController');
