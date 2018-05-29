@@ -48,7 +48,7 @@ class SeasonController extends Controller
      */
     public function store(SeasonForm $request)
     {
-        $request->saveGame();
+        $request->saveSeason();
 
         return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla kaydedildi');
     }
@@ -72,7 +72,9 @@ class SeasonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $season = Season::findOrFail($id);
+
+        return view('season.edit')->with('season', $season);
     }
 
     /**
@@ -82,9 +84,11 @@ class SeasonController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SeasonForm $request, $id)
     {
-        //
+        $request->updateSeason($id);
+
+        return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla güncellendi');
     }
 
     /**
