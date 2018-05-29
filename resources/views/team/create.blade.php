@@ -43,7 +43,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="team-info">Takım Genel Bilgileri</label>
-                <textarea class="form-control" id="team-info" rows="3"
+                <textarea class="form-control" id="team-info" rows="5"
                           name="info">{{ old('info') }}</textarea>
             </div>
         </div>
