@@ -99,6 +99,8 @@ class SeasonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Season::where('id', $id)->delete();
+
+        return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla silindi');
     }
 }
