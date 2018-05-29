@@ -57,8 +57,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('games.index') }}">Maçlar</a>
-                                    <a class="dropdown-item" href="{{ route('seasons.index') }}">Sezon</a>
-                                    <a class="dropdown-item" href="{{ route('weeks.index') }}">Hafta</a>
+                                    <a class="dropdown-item" href="{{ route('seasons.index') }}">Sezonlar</a>
                                 </div>
                             </li>
                             <li class="nav-item active">
