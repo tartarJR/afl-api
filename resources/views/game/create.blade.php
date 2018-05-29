@@ -33,7 +33,8 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="game-date-time-text">Tarih ve Zaman</label>
-                <input type="datetime-local" class="form-control" id="game-date-time-text" name="game_date_time" value="{{ old('game_date_time') }}">
+                <input type="datetime-local" class="form-control" id="game-date-time-text" name="game_date_time"
+                       value="{{ old('game_date_time') }}">
             </div>
             <div class="form-group col-md-6">
                 <label for="game-place-text">Yer</label>
@@ -73,16 +74,6 @@
 
     </div>
 
-    @if(count($errors))
-        <div class="form-group">
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('layouts.validation-errors')
 
 @endsection
