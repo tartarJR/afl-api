@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h5>Maç Oluşturma Formu</h5>
+    <h5>Maç Güncelleme Formu</h5>
 
     <div class="mt-3">
 
