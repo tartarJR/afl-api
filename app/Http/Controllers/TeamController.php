@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Team;
+
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller

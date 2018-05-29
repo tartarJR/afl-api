@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Game;
+use App\Models\Game;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GameForm extends FormRequest

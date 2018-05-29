@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeasonForm;
-use App\Season;
+use App\Models\Season;
+
 
 class SeasonController extends Controller
 {

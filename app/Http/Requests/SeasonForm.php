@@ -2,7 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Season;
+
+use App\Models\Season;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SeasonForm extends FormRequest
