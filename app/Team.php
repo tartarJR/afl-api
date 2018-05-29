@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
     public function user()
     {
         return $this->hasOne(User::class);
@@ -34,5 +36,15 @@ class Team extends Model
     public function reports()
     {
         return $this->belongsToMany(Report::class, 'teams_reports');
+    }
+
+    public function hasPlayers()
+    {
+        return count($this->players) > 0 ? true : false;
+    }
+
+    public function hasCoaches()
+    {
+        return count($this->coaches) > 0 ? true : false;
     }
 }
