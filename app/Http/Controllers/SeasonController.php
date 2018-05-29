@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeasonForm;
 use App\Season;
-use Illuminate\Http\Request;
 
 class SeasonController extends Controller
 {
@@ -43,7 +42,7 @@ class SeasonController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\SeasonForm $request
      * @return \Illuminate\Http\Response
      */
     public function store(SeasonForm $request)
@@ -80,7 +79,7 @@ class SeasonController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\SeasonForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
