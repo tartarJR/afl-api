@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             @if (count($seasons) === 0)
                 <div class="alert alert-info">
-                    <strong>Upps!</strong> Aranılan kriterlere uygun bir maç bulunamadı.
+                    <strong>Upps!</strong> Aranılan kriterlere uygun bir sezon bulunamadı.
                 </div>
             @else
                 <table class="table table-striped">
