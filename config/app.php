@@ -162,6 +162,9 @@ return [
 
         // Laravel Collective, Form Helper
         Collective\Html\HtmlServiceProvider::class,
+
+        // Hexadecimal color validator
+        Tylercd100\Validator\Color\ServiceProvider::class
     ],
 
     /*
