@@ -47,4 +47,9 @@ class Team extends Model
     {
         return count($this->coaches) > 0 ? true : false;
     }
+
+    public function getTeamLogoAttribute()
+    {
+        return 'storage/images/teams/' . $this->img_path;
+    }
 }
