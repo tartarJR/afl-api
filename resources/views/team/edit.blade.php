@@ -19,6 +19,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="team-logo">Takım Logosu</label>
+                <img src="{{  asset($team->team_logo) }}" height="60px" width="60px">
                 {!! Form::file('img_path', null, ['id' => 'team-logo', 'class' => 'form-control']) !!}
             </div>
         </div>
