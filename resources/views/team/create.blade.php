@@ -6,7 +6,7 @@
 
     <div class="mt-3">
 
-        {!! Form::open(['route' => 'teams.store']) !!}
+        {!! Form::open(['route' => 'teams.store', 'files' => true]) !!}
 
         {{ csrf_field() }}
 
@@ -19,8 +19,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="team-logo">Takım Logosu</label>
-                <input type="text" class="form-control" id="team-logo" name="img_path"
-                       value="{{ old('img_path') }}">
+                <input type="file" class="form-control" id="team-logo" name="img_path">
             </div>
         </div>
         <div class="form-row">
