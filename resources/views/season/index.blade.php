@@ -36,7 +36,7 @@
                                     Sezona ait maç bulunmamaktadır.
                                 @endif
                             </td>
-                            <td>{{ link_to_route('seasons.edit', 'Güncelle', $season->id) }}</td>
+                            <td>{{ link_to_route('seasons.edit', 'Güncelle', $season->id, ['class' => 'btn btn-primary']) }}</td>
                             <td>
                                 @if($season->hasGames())
                                     Bu sezonu silemezsiniz.

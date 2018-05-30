@@ -44,7 +44,7 @@
                                     Henüz kayıtlı oyuncu bulunmamaktadır.
                                 @endif
                             </td>
-                            <td>{{ link_to_route('teams.edit', 'Güncelle', $team->id) }}</td>
+                            <td>{{ link_to_route('teams.edit', 'Güncelle', $team->id, ['class' => 'btn btn-primary']) }}</td>
                             <td>
                                 <form method="POST" action="{{ route('teams.destroy', $team->id) }}">
                                     {{ csrf_field() }}
