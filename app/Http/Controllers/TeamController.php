@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\TeamForm;
 use App\Models\Team;
-use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
@@ -43,12 +43,14 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\TeamForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TeamForm $request)
     {
-        //
+        $request->saveTeam();
+
+        return redirect()->route('teams.index')->with('successMessage', 'Takım başarıyla kaydedildi');
     }
 
     /**
@@ -78,13 +80,15 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\TeamForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeamForm $request, $id)
     {
-        //
+        $request->updateTeam($id);
+
+        return redirect()->route('teams.index')->with('successMessage', 'Takım başarıyla güncellendi');
     }
 
     /**
