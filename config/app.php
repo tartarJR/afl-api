@@ -164,7 +164,10 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         // Hexadecimal color validator
-        Tylercd100\Validator\Color\ServiceProvider::class
+        Tylercd100\Validator\Color\ServiceProvider::class,
+
+        // Image upload lib
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -217,6 +220,9 @@ return [
         // Laravel Collective, Form Helper
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        // Image upload lib
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
