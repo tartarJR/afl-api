@@ -6,7 +6,7 @@
 
     <div class="mt-3">
 
-        {!! Form::model($team, ['method'=>'patch', 'route' => ['games.update', $team->id], 'files' => true]) !!}
+        {!! Form::model($team, ['method'=>'patch', 'route' => ['teams.update', $team->id], 'files' => true]) !!}
 
         {{ csrf_field() }}
 
