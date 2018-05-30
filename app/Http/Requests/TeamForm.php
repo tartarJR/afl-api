@@ -89,8 +89,6 @@ class TeamForm extends FormRequest
             $oldTeamLogo = $team->img_path;
             $data['img_path'] = $teamLogoImgName;
 
-            //dd(storage_path('app/public/images/teams/' . $oldTeamLogo));
-
             File::delete(storage_path('app/public/images/teams/' . $oldTeamLogo));
         }
 
