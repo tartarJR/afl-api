@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TeamForm;
 use App\Models\Team;
+use Illuminate\Support\Facades\File;
 
 class TeamController extends Controller
 {
@@ -99,6 +100,12 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::where('id', $id)->first();
+
+        File::delete(storage_path('app/public/images/teams/' . $team->img_path));
+
+        $team->delete();
+
+        return redirect()->route('teams.index')->with('successMessage', 'Takım başarıyla silindi');
     }
 }
