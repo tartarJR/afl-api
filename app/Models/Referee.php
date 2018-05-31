@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Referee extends Model
 {
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
     public function refereeTypes()
     {
         return $this->belongsToMany(RefereeType::class, 'games_referees')->withPivot('game_id');
@@ -49,6 +51,6 @@ class Referee extends Model
 
     public function setBirthDateAttribute($value)
     {
-        $this->attributes['birth_date'] = Carbon::parse($value)->format('Y-m-d');
+        $this->attributes['birth_date'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
     }
 }
