@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Referee;
 use Illuminate\Http\Request;
 
 class RefereeController extends Controller
@@ -23,7 +24,9 @@ class RefereeController extends Controller
      */
     public function index()
     {
-        return view('referee.index');
+        $referees = Referee::paginate(10);
+
+        return view('referee.index')->with('referees', $referees);
     }
 
     /**
