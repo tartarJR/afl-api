@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Referee extends Model
@@ -14,5 +15,30 @@ class Referee extends Model
     public function games()
     {
         return $this->belongsToMany(Game::class, 'games_referees')->withPivot('game_id', 'referee_type_id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['birth_date'])->age;
+    }
+
+    public function getExperienceStringAttribute()
+    {
+        return $this->experience . ' yıl';
+    }
+
+    public function hasRuledGames()
+    {
+        return count($this->games()->where('is_played', 1)->get()) > 0 ? true : false;
+    }
+
+    public function hasGamesToRule()
+    {
+        return count($this->games()->where('is_played', 0)->get()) > 0 ? true : false;
     }
 }
