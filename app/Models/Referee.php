@@ -41,4 +41,14 @@ class Referee extends Model
     {
         return count($this->games()->where('is_played', 0)->get()) > 0 ? true : false;
     }
+
+    public function getBirthDateAttribute()
+    {
+        return Carbon::parse($this->attributes['birth_date'])->format('d/m/Y');
+    }
+
+    public function setBirthDateAttribute($value)
+    {
+        $this->attributes['birth_date'] = Carbon::parse($value)->format('Y-m-d');
+    }
 }
