@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-between bd-highlight mb-3">
-        <div class="p-2 bd-highlight"><a href="{{ route('referees.create') }}"><p>Yeni bir takım yarat</p></a></div>
+        <div class="p-2 bd-highlight"><a href="{{ route('referees.create') }}"><p>Yeni bir hakem yarat</p></a></div>
         <div class="p-2 bd-highlight">{{ $referees->links() }}</div>
     </div>
 
