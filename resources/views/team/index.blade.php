@@ -22,6 +22,7 @@
                         <th scope="col">Takım</th>
                         <th scope="col">Koçlar</th>
                         <th scope="col">Oyuncular</th>
+                        <th scope="col">Takım Detayları</th>
                         <th scope="col">Takımı Güncelle</th>
                         <th scope="col">Takımı Sil</th>
                     </tr>
@@ -44,6 +45,7 @@
                                     Henüz kayıtlı oyuncu bulunmamaktadır.
                                 @endif
                             </td>
+                            <td>{{ link_to_route('teams.show', 'Detayları Gör', $team->id, ['class' => 'btn btn-primary']) }}</td>
                             <td>{{ link_to_route('teams.edit', 'Güncelle', $team->id, ['class' => 'btn btn-primary']) }}</td>
                             <td>
                                 <form method="POST" action="{{ route('teams.destroy', $team->id) }}">
