@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h5>Hakemler</h5>
+
     @include('layouts.success-message')
 
     <div class="row">
