@@ -105,4 +105,9 @@ class RefereeController extends Controller
 
         return redirect()->route('referees.index')->with('successMessage', 'Hakem başarıyla silindi');
     }
+
+    public function assign()
+    {
+        return view('referee.assign');
+    }
 }
