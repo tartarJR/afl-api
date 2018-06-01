@@ -37,4 +37,6 @@ Route::resource('teams', 'TeamController');
 Route::resource('reports', 'ReportController');
 Route::resource('players', 'PlayerController');
 Route::resource('coaches', 'CoachController');
+
+Route::get('/referees/assign', 'RefereeController@assign')->name('referees.assign');
 Route::resource('referees', 'RefereeController');
