@@ -16,6 +16,7 @@
     <script src="{{ asset('js/libs/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/libs/jquery-ui.min.js') }}" defer></script>
     <script src="{{ asset('js/datepickers.js') }}" defer></script>
+    <script src="{{ asset('js/nav-bar.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -34,62 +35,51 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'TAFL APP ADMIN PANEL') }}
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" id="navbar-list">
                     @auth
                         @if(Auth::user()->isAdmin())
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('coach') }}">Koçlar <span
-                                            class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('coach') }}">Koçlar</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('player') }}">Oyuncular <span
-                                            class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('player') }}">Oyuncular</a>
                             </li>
                         @elseif(Auth::user()->isSuperAdmin())
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sezon Yönetimi
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('games.index') }}">Maçlar</a>
-                                    <a class="dropdown-item" href="{{ route('seasons.index') }}">Sezonlar</a>
+                                    <a class="nav-link" href="{{ route('games.index') }}">Maçlar</a>
+                                    <a class="nav-link" href="{{ route('seasons.index') }}">Sezonlar</a>
                                 </div>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('teams.index') }}">Takımlar <span
-                                            class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('teams.index') }}">Takımlar</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Hakam Yönetimi
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hakem Yönetimi
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="{{ route('referees.index') }}">Hakamler <span
-                                                class="sr-only">(current)</span></a>
-                                    <a class="nav-link" href="{{ route('referees.index') }}">Hakem Atamaları <span
-                                                class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{{ route('referees.index') }}">Hakamler</a>
+                                    <a class="nav-link" href="{{ route('referees.index') }}">Hakem Atamaları</a>
                                 </div>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('reports.index') }}">Haberler <span
-                                            class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reports.index') }}">Haberler</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('coaches.index') }}">Koçlar <span
-                                            class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('coaches.index') }}">Koçlar</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('players.index') }}">Oyuncular <span
-                                            class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('players.index') }}">Oyuncular</a>
                             </li>
                         @endif
                     @endauth
@@ -102,22 +92,18 @@
                         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Giriş Yap') }}</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Merhaba {{ Auth::user()->fullName() }} <span
-                                        class="caret"></span>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              Merhaba {{ Auth::user()->full_name }}
+                              <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Çıkış Yap') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  @csrf
                                 </form>
                             </div>
                         </li>
