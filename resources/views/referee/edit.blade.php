@@ -37,6 +37,7 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Hakem Güncelle</button>
         </div>
+        
         {!! Form::close() !!}
 
     </div>

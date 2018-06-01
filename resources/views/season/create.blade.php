@@ -16,7 +16,12 @@
                 <select id="season-select" class="form-control" name="season">
                     <option value="">Lütfen sezon seçiniz</option>
                     @for($year = 2010; $year<2026; $year++)
-                        <option value="{{ strval($year) . '/' .strval($year + 1) }}">{{ strval($year) . '/' .strval($year + 1) }}</option>
+                        @php
+                            $yearString = strval($year) . '/' .strval($year + 1);
+                        @endphp
+                        <option value="{{ $yearString }}" {{ $yearString == $season->season ? 'selected="selected"' : '' }}>
+                            {{ $yearString }}
+                        </option>
                     @endfor
                 </select>
             </div>

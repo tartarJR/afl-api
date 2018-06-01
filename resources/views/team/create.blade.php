@@ -25,25 +25,21 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="team-primary-color">Birincil Renk</label>
-                <input type="text" class="form-control" id="team-primary-color" name="primary_color_code"
-                       value="{{ old('primary_color_code') }}">
+                <input type="text" class="form-control" id="team-primary-color" name="primary_color_code" value="{{ old('primary_color_code') }}">
             </div>
             <div class="form-group col-md-4">
                 <label for="team-secondary-color">İkincil Renk</label>
-                <input type="text" class="form-control" id="team-secondary-color" name="secondary_color_code"
-                       value="{{ old('secondary_color_code') }}">
+                <input type="text" class="form-control" id="team-secondary-color" name="secondary_color_code" value="{{ old('secondary_color_code') }}">
             </div>
             <div class="form-group col-md-4">
                 <label for="team-alternative-color">Alternatif Renk</label>
-                <input type="text" class="form-control" id="team-alternative-color" name="alternative_color_code"
-                       value="{{ old('alternative_color_code') }}">
+                <input type="text" class="form-control" id="team-alternative-color" name="alternative_color_code" value="{{ old('alternative_color_code') }}">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="team-info">Takım Genel Bilgileri</label>
-                <textarea class="form-control" id="team-info" rows="5"
-                          name="info">{{ old('info') }}</textarea>
+                <textarea class="form-control" id="team-info" rows="5" name="info">{{ old('info') }}</textarea>
             </div>
         </div>
         <div class="form-group">
