@@ -15,6 +15,9 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/libs/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/libs/jquery-ui.min.js') }}" defer></script>
+    <script src="{{ asset('js/libs/jquery.validate.min.js') }}" defer></script>
+    <script src="{{ asset('js/libs/jquery.steps.min.js') }}" defer></script>
+    <script src="{{ asset('js/libs/jquery-ui.min.js') }}" defer></script>
     <script src="{{ asset('js/datepickers.js') }}" defer></script>
     <script src="{{ asset('js/nav-bar.js') }}" defer></script>
 
@@ -69,7 +72,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="nav-link" href="{{ route('referees.index') }}">Hakamler</a>
-                                    <a class="nav-link" href="{{ route('referees.index') }}">Hakem Atamaları</a>
+                                    <a class="nav-link" href="{{ route('referees.assign') }}">Hakem Atamaları</a>
                                 </div>
                             </li>
                             <li class="nav-item">
