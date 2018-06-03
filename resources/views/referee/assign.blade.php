@@ -49,6 +49,6 @@
 
     @include('layouts.validation-errors')
 
-    <script src="{{ asset('js/assign-ref-step-form.js') }}" defer></script>
+    <script src="{{ asset('js/referee/assign.js') }}" defer></script>
     <link href="{{ asset('css/libs/jquery.steps.css') }}" rel="stylesheet">
 @endsection
