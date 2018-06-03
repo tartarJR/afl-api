@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h5>Maç Oluşturma Formu</h5>
+    <h5>Maç Güncelleme Formu</h5>
 
     <div class="mt-3">
 
@@ -71,16 +71,6 @@
 
     </div>
 
-    @if(count($errors))
-        <div class="form-group">
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('layouts.validation-errors')
 
 @endsection

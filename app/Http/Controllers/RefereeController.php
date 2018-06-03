@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\RefereeForm;
+use App\Models\Referee;
+use Carbon\Carbon;
 
 class RefereeController extends Controller
 {
@@ -23,7 +25,9 @@ class RefereeController extends Controller
      */
     public function index()
     {
-        return view('referee.index');
+        $referees = Referee::paginate(10);
+
+        return view('referee.index')->with('referees', $referees);
     }
 
     /**
@@ -33,18 +37,20 @@ class RefereeController extends Controller
      */
     public function create()
     {
-        //
+        return view('referee.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\RefereeForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RefereeForm $request)
     {
-        //
+        $request->saveReferee();
+
+        return redirect()->route('referees.index')->with('successMessage', 'Hakem başarıyla kaydedildi');
     }
 
     /**
@@ -66,19 +72,25 @@ class RefereeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $referee = Referee::findOrFail($id);
+
+        return view('referee.edit')->with('referee', $referee);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\RefereeForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RefereeForm $request, $id)
     {
-        //
+        //dd(Carbon::createFromFormat('d/m/Y', $request->birth_date)->toDateString());
+
+        $request->updateReferee($id);
+
+        return redirect()->route('referees.index')->with('successMessage', 'Hakem başarıyla güncellendi');
     }
 
     /**
@@ -89,6 +101,13 @@ class RefereeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Referee::where('id', $id)->delete();
+
+        return redirect()->route('referees.index')->with('successMessage', 'Hakem başarıyla silindi');
+    }
+
+    public function assign()
+    {
+        return view('referee.assign');
     }
 }

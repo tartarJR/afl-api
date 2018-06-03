@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Http\Requests\TeamForm;
+use App\Models\Team;
+use Illuminate\Support\Facades\File;
 
 class TeamController extends Controller
 {
@@ -23,7 +26,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('team.index');
+        $teams = Team::paginate(10);
+
+        return view('team.index')->with('teams', $teams);
     }
 
     /**
@@ -33,18 +38,20 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('team.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\TeamForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TeamForm $request)
     {
-        //
+        $request->saveTeam();
+
+        return redirect()->route('teams.index')->with('successMessage', 'Takım başarıyla kaydedildi');
     }
 
     /**
@@ -55,7 +62,9 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        return view('team.show')->with('team', $team);
     }
 
     /**
@@ -66,19 +75,23 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        return view('team.edit')->with('team', $team);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\TeamForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeamForm $request, $id)
     {
-        //
+        $request->updateTeam($id);
+
+        return redirect()->route('teams.index')->with('successMessage', 'Takım başarıyla güncellendi');
     }
 
     /**
@@ -89,6 +102,12 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::where('id', $id)->first();
+
+        File::delete(storage_path('app/public/images/teams/' . $team->img_path));
+
+        $team->delete();
+
+        return redirect()->route('teams.index')->with('successMessage', 'Takım başarıyla silindi');
     }
 }

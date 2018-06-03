@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Season;
-use Illuminate\Http\Request;
+use App\Http\Requests\SeasonForm;
+use App\Models\Season;
+
 
 class SeasonController extends Controller
 {
@@ -24,7 +25,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        $seasons = Season::paginate(10);
+        $seasons = Season::orderBy('season', 'desc')->paginate(10);
 
         return view('season.index')->with('seasons', $seasons);
     }
@@ -36,18 +37,20 @@ class SeasonController extends Controller
      */
     public function create()
     {
-        //
+        return view('season.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\SeasonForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SeasonForm $request)
     {
-        //
+        $request->saveSeason();
+
+        return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla kaydedildi');
     }
 
     /**
@@ -69,19 +72,23 @@ class SeasonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $season = Season::findOrFail($id);
+
+        return view('season.edit')->with('season', $season);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\SeasonForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SeasonForm $request, $id)
     {
-        //
+        $request->updateSeason($id);
+
+        return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla güncellendi');
     }
 
     /**
@@ -92,6 +99,8 @@ class SeasonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Season::where('id', $id)->delete();
+
+        return redirect()->route('seasons.index')->with('successMessage', 'Sezon başarıyla silindi');
     }
 }

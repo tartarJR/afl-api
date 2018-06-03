@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Game;
-
 use App\Http\Requests\GameForm;
-use App\Season;
-use App\Team;
-use App\Week;
+use App\Models\Game;
+use App\Models\Season;
+use App\Models\Team;
+use App\Models\Week;
 use Illuminate\Http\Request;
 
 class GameController extends Controller

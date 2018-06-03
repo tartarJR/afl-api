@@ -43,19 +43,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="home-team-score-text">Ev Sahibi Takım Skoru</label>
-                <input type="text" class="form-control" id="home-team-score-text" name="home_team_scored"
-                       value="{{ old('home_team_scored') }}">
+                <input type="text" class="form-control" id="home-team-score-text" name="home_team_scored" value="{{ old('home_team_scored') }}">
             </div>
             <div class="form-group col-md-6">
                 <label for="away-team-score-text">Misafir Takım Skoru</label>
-                <input type="text" class="form-control" id="away-team-score-text" name="away_team_scored"
-                       value="{{ old('away_team_scored') }}">
+                <input type="text" class="form-control" id="away-team-score-text" name="away_team_scored" value="{{ old('away_team_scored') }}">
             </div>
         </div>
         <div class="form-group">
             <label for="game-summary-text">Maç Özeti</label>
-            <textarea class="form-control" id="game-summary-text" rows="3"
-                      name="game_summary">{{ old('game_summary') }}</textarea>
+            <textarea class="form-control" id="game-summary-text" rows="3" name="game_summary">{{ old('game_summary') }}</textarea>
         </div>
         <div class=" form-group">
             <div class="form-check">
@@ -73,16 +70,6 @@
 
     </div>
 
-    @if(count($errors))
-        <div class="form-group">
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('layouts.validation-errors')
 
 @endsection
