@@ -18,6 +18,7 @@
     <script src="{{ asset('js/libs/jquery.validate.min.js') }}" defer></script>
     <script src="{{ asset('js/libs/jquery.steps.min.js') }}" defer></script>
     <script src="{{ asset('js/libs/jquery-ui.min.js') }}" defer></script>
+    <script src="{{ asset('js/libs/selectize.js') }}" defer></script>
     <script src="{{ asset('js/datepickers.js') }}" defer></script>
     <script src="{{ asset('js/nav-bar.js') }}" defer></script>
 
