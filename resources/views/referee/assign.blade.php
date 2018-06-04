@@ -40,7 +40,7 @@
                             <select id="{{ $refereeType->input_name }}" class="ref-select" name="{{ $refereeType->input_name }}">
                                 <option value="">Lütfen seçiniz</option>
                                 @foreach($referees as $referee)
-                                  <option value="{{$referee->id}}">{{$referee->full_name}}</option>
+                                  <option value="{{$referee->id . '.' . $refereeType->id}}">{{$referee->full_name}}</option>
                                 @endforeach
                               </select>
 
