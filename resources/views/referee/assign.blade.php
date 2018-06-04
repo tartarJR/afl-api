@@ -11,51 +11,46 @@
         {{ csrf_field() }}
 
         <div>
-            <h3>Account</h3>
+            <h3>Maç Seçimi</h3>
             <section>
-                @for ($i = 0; $i < 4; $i++)
-                    <div class="form-row">
-                        @for ($j = 0; $j < 2; $j++)
-                            <div class="form-group col-md-3">
-                                <label for="{{ lcfirst($refereeTypes[$keys[$i]]) . '-select' }}">{{ $refereeTypes[$keys[$i]] }}</label>
-                            </div>
-                        @endfor
-                    </div>
-                @endfor
+              <div class="form-row">
+                  <div class="form-group col-md-4">
+                      <label for="season-text">Sezon: {{ $latestSeason->season }}</label>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-4">
+                      <label for="game-select">Maç</label>
+                      {!! Form::select('game', $games, null,['id' => 'game-select', 'placeholder' => 'Lütfen seçiniz']) !!}
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-4">
+                    **
+                      <p>Maç seçimi için listeli giriş kutusunu tıklayıp açarak kaydırma yoluyla istediğiniz maçı seçebilir veya arama kısmına istediğiniz maç ile ilgili bir anahtar sözcük yazarak maçı bulup sonrasında seçebilirsiniz.</p>
+                  </div>
+              </div>
+            </section>
+            <h3>Hakem Seçimi</h3>
+            <section>
+                <div class="form-row">
+                @foreach($refereeTypes as $refereeType)
+                        <div class="form-group col-md-4">
+                            <label for="{{ lcfirst($refereeType->input_name) . '-select' }}">{{ $refereeType->type }}</label>
+                            <select id="{{ $refereeType->input_name }}" class="ref-select" name="{{ $refereeType->input_name }}">
+                                <option value="">Lütfen seçiniz</option>
+                                @foreach($referees as $referee)
+                                  <option value="{{$referee->id}}">{{$referee->full_name}}</option>
+                                @endforeach
+                              </select>
 
-                @foreach($refereeTypes as $id => $type)
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="{{ lcfirst($type) . '-select' }}">{{ $type }}</label>
-                            {!! Form::select('season_id', $referees, null,['id' => lcfirst($type) . '-select', 'class' => 'form-control', 'placeholder' => 'Lütfen hakem seçiniz']) !!}
                         </div>
-                    </div>
                 @endforeach
+                </div>
             </section>
-            <h3>Profile</h3>
+            <h3>Hakem Atamalarını Tamamla</h3>
             <section>
-                <label for="name">First name *</label>
-                <input id="name" name="name" type="text" class="required">
-                <label for="surname">Last name *</label>
-                <input id="surname" name="surname" type="text" class="required">
-                <label for="email">Email *</label>
-                <input id="email" name="email" type="text" class="required email">
-                <label for="address">Address</label>
-                <input id="address" name="address" type="text">
-                <p>(*) Mandatory</p>
-            </section>
-            <h3>Hints</h3>
-            <section>
-                <ul>
-                    <li>Foo</li>
-                    <li>Bar</li>
-                    <li>Foobar</li>
-                </ul>
-            </section>
-            <h3>Finish</h3>
-            <section>
-                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label
-                        for="acceptTerms">I agree with the Terms and Conditions.</label>
+                <p>Hakem atamalarının doğruluğuna eminseniz "Atamaları Tamamla" butonuna tıklayarak işleminizi sonlandırabilirsiniz.</p>
             </section>
         </div>
 
@@ -67,4 +62,5 @@
 
     <script src="{{ asset('js/referee/assign.js') }}" defer></script>
     <link href="{{ asset('css/libs/jquery.steps.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/libs/selectize.default.css') }}" rel="stylesheet">
 @endsection
