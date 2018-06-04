@@ -39,4 +39,5 @@ Route::resource('players', 'PlayerController');
 Route::resource('coaches', 'CoachController');
 
 Route::get('/referees/assign', 'RefereeController@assign')->name('referees.assign');
+Route::post('/referees/assign', 'RefereeController@bind')->name('referees.assign');
 Route::resource('referees', 'RefereeController');

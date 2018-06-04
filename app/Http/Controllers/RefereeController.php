@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RefereeForm;
 use App\Models\Referee;
+use App\Models\RefereeType;
 use Carbon\Carbon;
 
 class RefereeController extends Controller
@@ -106,8 +107,27 @@ class RefereeController extends Controller
         return redirect()->route('referees.index')->with('successMessage', 'Hakem başarıyla silindi');
     }
 
+    /**
+     * Display a form for assigning referees.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function assign()
     {
-        return view('referee.assign');
+        $referees = Referee::get()->pluck('full_name', 'id');
+        $refereeTypes = RefereeType::pluck('type', 'id');
+
+        return view('referee.assign')->with(compact('referees', 'refereeTypes'));
+    }
+
+    /**
+     * Bind selected referees to selected game.
+     *
+     * @param  \App\Http\Requests\RefereeForm $request
+     * @return \Illuminate\Http\Response
+     */
+    public function bind()
+    {
+
     }
 }
