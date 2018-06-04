@@ -36,7 +36,7 @@
                 <div class="form-row">
                 @foreach($refereeTypes as $refereeType)
                         <div class="form-group col-md-4">
-                            <label for="{{ lcfirst($refereeType->input_name) . '-select' }}">{{ $refereeType->type }}</label>
+                            <label for="{{ $refereeType->input_name . '-select' }}">{{ $refereeType->type }}</label>
                             <select id="{{ $refereeType->input_name }}" class="ref-select" name="{{ $refereeType->input_name }}">
                                 <option value="">Lütfen seçiniz</option>
                                 @foreach($referees as $referee)
