@@ -136,11 +136,13 @@ class RefereeController extends Controller
     {
         $game = Game::find($request->game);
 
+        // sliced input array so I can only have ref inputs
         $refInputs = array_slice($request->all(), 2);
 
         foreach($refInputs as $refInput) {
             $refInputArray = explode(".", $refInput);
 
+            // when the $refInput is splitted the first index in the array is referee_id and the second one is referee_type_id
             $game->referees()->attach($refInputArray[0], ['referee_type_id' => $refInputArray[1]]);
         }
 
