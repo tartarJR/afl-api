@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RefereeForm;
+use App\Models\Game;
+use App\Models\Season;
 use App\Models\Referee;
 use App\Models\RefereeType;
 use Carbon\Carbon;
+
+use Illuminate\Http\Request;
 
 class RefereeController extends Controller
 {
@@ -114,20 +118,32 @@ class RefereeController extends Controller
      */
     public function assign()
     {
-        $referees = Referee::get()->pluck('full_name', 'id');
-        $refereeTypes = RefereeType::pluck('type', 'id');
+        $latestSeason = Season::orderBy('season','desc')->first();
+        $games = Game::get()->where('season_id', $latestSeason->id)->pluck('game_string', 'id');
+        $referees = Referee::get()->all('full_name', 'id');
+        $refereeTypes = RefereeType::get()->all('id', 'type', 'input_name');
 
-        return view('referee.assign')->with(compact('referees', 'refereeTypes'));
+        return view('referee.assign')->with(compact('referees', 'refereeTypes', 'latestSeason', 'games'));
     }
 
     /**
      * Bind selected referees to selected game.
      *
-     * @param  \App\Http\Requests\RefereeForm $request
+     * @param  \App\Http\Requests\RefereeAssignmentForm $request
      * @return \Illuminate\Http\Response
      */
-    public function bind()
+    public function bind(Request $request)
     {
+        $game = Game::find($request->game);
 
+        $refInputs = array_slice($request->all(), 2);
+
+        foreach($refInputs as $refInput) {
+            $refInputArray = explode(".", $refInput);
+
+            $game->referees()->attach($refInputArray[0], ['referee_type_id' => $refInputArray[1]]);
+        }
+
+        return 'yess';
     }
 }
