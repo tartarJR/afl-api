@@ -16,4 +16,15 @@ class RefereeType extends Model
     {
         return $this->belongsToMany(Game::class, 'games_referees');
     }
+
+    public function getInputNameAttribute()
+    {
+        $words = explode(" ", $this->type);
+
+        if (count($words) > 1) {
+            return  lcfirst($words[0]) . '-' .  lcfirst($words[1]);
+        }
+
+        return  lcfirst($words[0]);
+    }
 }
