@@ -58,6 +58,11 @@ class Game extends Model
         $this->attributes['game_date_time'] = Carbon::parse($value)->format('Y-m-d H:i:s');
     }
 
+    public function getGameStringAttribute()
+    {
+        return $this->week->week . ' ' . $this->awayTeam->name . '@' . $this->homeTeam->name;
+    }
+
     // filter games by season, week and team
     public function scopeOfFilter($query, $season_id, $week_id, $team_id)
     {
