@@ -134,6 +134,7 @@ class RefereeController extends Controller
      */
     public function bind(Request $request)
     {
+        // TODO validation and business logic needed
         $game = Game::find($request->game);
 
         // sliced input array so I can only have ref inputs
@@ -146,6 +147,19 @@ class RefereeController extends Controller
             $game->referees()->attach($refInputArray[0], ['referee_type_id' => $refInputArray[1]]);
         }
 
-        return 'yess';
+        return redirect()->route('games.index')->with('successMessage', 'Hakemler başarıyla atandı');
+    }
+
+    /**
+     * Display assigned referees of a game.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function assigned($id)
+    {
+        $game = Game::find($id);
+        $refereeTypes = RefereeType::get()->all('id', 'type');
+
+        return view('referee.assigned')->with(compact('game', 'refereeTypes'));
     }
 }
