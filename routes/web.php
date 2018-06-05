@@ -11,8 +11,6 @@
 |
 */
 
-//Route::get('/', 'Auth\LoginController@showLoginForm');
-
 // Authentication Routes
 Route::get('/', [
     'as' => 'login',
@@ -40,4 +38,5 @@ Route::resource('coaches', 'CoachController');
 
 Route::get('/referees/assign', 'RefereeController@assign')->name('referees.assign');
 Route::post('/referees/assign', 'RefereeController@bind')->name('referees.assign');
+Route::get('/referees/{team}/assigned', 'RefereeController@assigned')->name('referees.assigned');
 Route::resource('referees', 'RefereeController');
