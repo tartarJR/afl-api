@@ -36,6 +36,7 @@
                         <th scope="col">Hafta</th>
                         <th scope="col">Ev Sahibi Takım</th>
                         <th scope="col">Misafir Takım</th>
+                        <th scope="col">Hakemler</th>
                         <th scope="col">Tarih ve Saat</th>
                         <th scope="col">Yer</th>
                     </tr>
@@ -47,6 +48,13 @@
                             <td>{{ $game->week->week }}</td>
                             <td>{{ $game->homeTeam->name }}</td>
                             <td>{{ $game->awayTeam->name }}</td>
+                            <td>
+                                @if (count($game->referees) > 0)
+                                    {{ link_to_route('referees.assigned', 'Hakemleri Gör', $game->id, ['class' => 'btn btn-primary']) }}
+                                @else
+                                    {{ link_to_route('referees.assign', 'Hakemleri Ata', ['class' => 'btn btn-primary']) }}
+                                @endif
+                            </td>
                             <td>{{ $game->local_game_date_time }}</td>
                             <td>{{ $game->place }}</td>
                             <td>{{ link_to_route('games.edit', 'Güncelle', $game->id, ['class' => 'btn btn-primary']) }}</td>
