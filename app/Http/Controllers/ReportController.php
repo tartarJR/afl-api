@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Team;
 
+use App\Http\Requests\ReportForm;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -37,18 +39,22 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::pluck('name', 'id');
+
+        return view('report.create')->with('teams', $teams);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\ReportForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReportForm $request)
     {
-        //
+        $request->saveReport();
+
+        return redirect()->route('reports.index')->with('successMessage', 'Haber başarıyla kaydedildi');
     }
 
     /**
