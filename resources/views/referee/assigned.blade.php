@@ -19,6 +19,7 @@
                   <tr>
                       <th scope="col">Hakem Tipi</th>
                       <th scope="col">Hakem</th>
+                      <!-- TODO removing and adding refs from a game links/buttons-->
                   </tr>
                   </thead>
                   <tbody>
