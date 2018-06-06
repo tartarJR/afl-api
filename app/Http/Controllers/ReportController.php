@@ -76,19 +76,24 @@ class ReportController extends Controller
      */
     public function edit($id)
     {
-        //
+        $report = Report::find($id);
+        $teams = Team::pluck('name', 'id');
+
+        return view('report.edit')->with(compact('report', 'teams'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\ReportForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReportForm $request, $id)
     {
-        //
+      $request->updateReport($id);
+
+      return redirect()->route('reports.index')->with('successMessage', 'Haber başarıyla güncellendi');
     }
 
     /**
