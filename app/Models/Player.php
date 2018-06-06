@@ -22,4 +22,14 @@ class Player extends Model
     {
         return $this->belongsTo(Position::class);
     }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['birth_date'])->age;
+    }
 }
