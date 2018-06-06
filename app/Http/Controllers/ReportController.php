@@ -65,7 +65,9 @@ class ReportController extends Controller
      */
     public function show($id)
     {
-        //
+        $report = Report::find($id);
+
+        return view('report.show')->with('report', $report);
     }
 
     /**
