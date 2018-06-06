@@ -19,12 +19,12 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="content">Haber İçeriği</label>
-                <textarea class="form-control" id="content" rows="5" name="content">{{ old('content') }}</textarea>
+                <textarea class="form-control" id="content" rows="7" name="content">{{ old('content') }}</textarea>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="img-path">Habere İmaj Seçimi</label>
+                <label for="img-path">Haber İmaj Seçimi</label>
                 <input type="file" class="form-control" id="img-path" name="img_path">
             </div>
         </div>
