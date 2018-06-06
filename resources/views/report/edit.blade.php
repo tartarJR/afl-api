@@ -53,7 +53,7 @@
 
     @include('layouts.validation-errors')
 
-    <script src="{{ asset('js/report/create.js') }}" defer></script>
+    <script src="{{ asset('js/report/multiselect-selectize.js') }}" defer></script>
     <link href="{{ asset('css/libs/selectize.default.css') }}" rel="stylesheet">
 
 @endsection
