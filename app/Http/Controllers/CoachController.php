@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coach;
+
 use Illuminate\Http\Request;
 
 class CoachController extends Controller
@@ -23,7 +25,9 @@ class CoachController extends Controller
      */
     public function index()
     {
-        return view('coach.index');
+      $coaches = Coach::paginate(10);
+
+      return view('coach.index')->with('coaches', $coaches);
     }
 
     /**
