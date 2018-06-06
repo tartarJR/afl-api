@@ -12,4 +12,9 @@ class Report extends Model
     {
         return $this->belongsToMany(Team::class, 'teams_reports')->withTimestamps();
     }
+
+    public function getReportImgAttribute()
+    {
+        return 'storage/images/reports/' . $this->img_path;
+    }
 }
