@@ -78,19 +78,25 @@ class CoachController extends Controller
      */
     public function edit($id)
     {
-        //
+      $coach = Coach::find($id);
+      $coachTypes = CoachType::pluck('type', 'id');
+      $teams = Team::pluck('name', 'id');
+
+      return view('coach.edit')->with(compact('coach', 'coachTypes', 'teams'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\CoachForm $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoachForm $request, $id)
     {
-        //
+        $request->updateCoach($id);
+
+        return redirect()->route('coaches.index')->with('successMessage', 'Koç başarıyla güncellendi');
     }
 
     /**
