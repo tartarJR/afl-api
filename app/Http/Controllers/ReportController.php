@@ -7,6 +7,7 @@ use App\Models\Team;
 
 use App\Http\Requests\ReportForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ReportController extends Controller
 {
@@ -106,6 +107,13 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $report = Report::where('id', $id)->first();
+
+      File::delete(storage_path('app/public/images/reports/' . $report->img_path));
+
+      $report->teams()->detach();
+      $report->delete();
+
+      return redirect()->route('reports.index')->with('successMessage', 'Haber başarıyla silindi');
     }
 }
