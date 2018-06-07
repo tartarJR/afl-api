@@ -85,7 +85,7 @@ class CoachForm extends FormRequest
            $fileLocation = storage_path('app/public/images/coaches/' . $coachImgName);
            Image::make($coachImg)->resize(400, 400)->save($fileLocation);
 
-           $oldCoachImage = $team->img_path;
+           $oldCoachImage = $coach->img_path;
            $data['img_path'] = $coachImgName;
 
            File::delete(storage_path('app/public/images/coaches/' . $oldCoachImage));
