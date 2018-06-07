@@ -43,4 +43,14 @@ class Player extends Model
     {
         $this->attributes['birth_date'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
     }
+
+    public function getWeightWithUnitAttribute()
+    {
+        return $this->weight . ' kg';
+    }
+
+    public function getHeightWithUnitAttribute()
+    {
+        return $this->height . ' cm';
+    }
 }
