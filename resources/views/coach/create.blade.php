@@ -42,8 +42,8 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="team-logo">Koç Resmi</label>
-                <input type="file" class="form-control" id="team-logo" name="img_path">
+                <label for="img-path">Koç Resmi</label>
+                <input type="file" class="form-control" id="img-path" name="img_path">
             </div>
         </div>
         <div class="form-group">
