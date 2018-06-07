@@ -32,4 +32,14 @@ class Player extends Model
     {
         return Carbon::parse($this->attributes['birth_date'])->age;
     }
+
+    public function getBirthDateAttribute()
+    {
+        return Carbon::parse($this->attributes['birth_date'])->format('d/m/Y');
+    }
+
+    public function setBirthDateAttribute($value)
+    {
+        $this->attributes['birth_date'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
+    }
 }
