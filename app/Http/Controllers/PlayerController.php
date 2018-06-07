@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
+
 use Illuminate\Http\Request;
 
 class PlayerController extends Controller
@@ -23,7 +25,9 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        return view('player.index');
+      $players = Player::paginate(10);
+
+      return view('player.index')->with('players', $players);
     }
 
     /**
