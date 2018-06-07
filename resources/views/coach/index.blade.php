@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+    <h5>Koçlar</h5>
 
     @include('layouts.success-message')
 
