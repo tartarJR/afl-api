@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CoachForm;
 use App\Models\Coach;
+use App\Models\CoachType;
+use App\Models\Team;
 
 use Illuminate\Http\Request;
 
@@ -37,18 +40,23 @@ class CoachController extends Controller
      */
     public function create()
     {
-        //
+        $coachTypes = CoachType::pluck('type', 'id');
+        $teams = Team::pluck('name', 'id');
+
+        return view('coach.create')->with(compact('coachTypes', 'teams'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\CoachForm $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CoachForm $request)
     {
-        //
+        $request->saveCoach();
+
+        return redirect()->route('coaches.index')->with('successMessage', 'Koç başarıyla kaydedildi');
     }
 
     /**
