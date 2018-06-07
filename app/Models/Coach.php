@@ -38,4 +38,9 @@ class Coach extends Model
     {
         $this->attributes['birth_date'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
     }
+
+    public function getCoachImgAttribute()
+    {
+        return 'storage/images/coaches/' . $this->img_path;
+    }
 }
