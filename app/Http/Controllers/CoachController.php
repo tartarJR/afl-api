@@ -8,6 +8,7 @@ use App\Models\CoachType;
 use App\Models\Team;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CoachController extends Controller
 {
@@ -107,6 +108,12 @@ class CoachController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $coach = Coach::where('id', $id)->first();
+
+      File::delete(storage_path('app/public/images/coaches/' . $coach->img_path));
+
+      $coach->delete();
+
+      return redirect()->route('coaches.index')->with('successMessage', 'Koç başarıyla silindi');
     }
 }
