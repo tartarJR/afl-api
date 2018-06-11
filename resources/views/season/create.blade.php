@@ -19,7 +19,7 @@
                         @php
                             $yearString = strval($year) . '/' .strval($year + 1);
                         @endphp
-                        <option value="{{ $yearString }}" {{ $yearString == $season->season ? 'selected="selected"' : '' }}>
+                        <option value="{{ $yearString }}">
                             {{ $yearString }}
                         </option>
                     @endfor
